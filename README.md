@@ -1,2 +1,3 @@
-# vue-web3-starter
-vue-web3-starter
+# web3-starter
+
+web3-starter
