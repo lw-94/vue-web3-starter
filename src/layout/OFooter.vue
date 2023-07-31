@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import Twitter from '@/assets/svg/twitter.svg'
-
 //
 const linkArr = ref([
   {
-    title: '© Dune DAO 2023',
+    title: '©',
     children: []
   },
   {
-    title: 'Information',
+    title: 'title1',
     children: []
   },
   {
-    title: 'Get in touch',
-    children: [
-      {
-        title: 'Twitter',
-        icon: Twitter,
-        link: 'https://twitter.com/DuneAirdrop'
-      }
-    ]
+    title: 'title2',
+    children: []
   },
   {
-    title: 'The fine print',
+    title: 'title3',
     children: []
   }
 ])
@@ -40,15 +32,17 @@ const onClickLink = (link: string) => {
             <dt class="py4 font-500 border-b border-solid border-[#000]">
               {{ item.title }}
             </dt>
-            <dd
-              v-for="itemChild in item.children"
-              :key="itemChild.title"
-              class="flex items-center py2 border-b border-solid border-[#6f6f6f] cursor-pointer hover:op-[.8]"
-              @click="onClickLink(itemChild.link)"
-            >
-              <img :src="itemChild.icon" class="w4 h4 mr-[10px]" />
-              <span class="font-300">{{ itemChild.title }}</span>
-            </dd>
+            <template v-for="itemChild in item.children">
+              <dd
+                v-if="itemChild"
+                :key="itemChild.title"
+                class="flex items-center py2 border-b border-solid border-[#6f6f6f] cursor-pointer hover:op-[.8]"
+                @click="onClickLink(itemChild.link)"
+              >
+                <img :src="itemChild.icon" class="w4 h4 mr-[10px]" />
+                <span class="font-300">{{ itemChild.title }}</span>
+              </dd>
+            </template>
           </dl>
         </li>
       </ul>
