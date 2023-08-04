@@ -1,15 +1,11 @@
-import { onBeforeUnmount } from 'vue'
-
 import { ethers } from 'ethers'
 import { storeToRefs } from 'pinia'
 
 import { useWalletStore } from '@/stores/wallet'
+import { strTo16 } from '@/utils'
 
 import type { NetInfo } from '@/apis/bridge'
 
-const strTo16 = (numStr: string): string => {
-  return '0x' + parseInt(numStr).toString(16)
-}
 const formatAddChain = (info: NetInfo) => {
   const {
     chain_id,

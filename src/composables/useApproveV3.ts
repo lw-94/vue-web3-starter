@@ -1,5 +1,3 @@
-import { ref } from 'vue'
-
 import { ethers } from 'ethers'
 import { storeToRefs } from 'pinia'
 

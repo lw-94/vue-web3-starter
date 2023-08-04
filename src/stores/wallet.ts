@@ -1,5 +1,3 @@
-import { computed, ref } from 'vue'
-
 import { defineStore } from 'pinia'
 
 import Metamask from '@/assets/img/metamask.png'

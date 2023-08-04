@@ -1,11 +1,9 @@
-import { ref } from 'vue'
-
 import { ethers } from 'ethers'
 import { storeToRefs } from 'pinia'
 
 import { useWalletStore } from '@/stores/wallet'
 import { ERC20_ABI } from '@/utils/abis/erc20'
-import { MAX_NUM } from '@/utils/constants'
+import { APPROVE_MAX_NUM } from '@/utils/constants'
 
 import useWallet from './useWallet'
 
@@ -39,7 +37,7 @@ const useApprove = () => {
     const contract = new ethers.Contract(tokenAddr, ERC20_ABI, signer)
     isApproving.value = true
     try {
-      const res = await contract.approve(farmAddr, MAX_NUM)
+      const res = await contract.approve(farmAddr, APPROVE_MAX_NUM)
       await res.wait(1)
       ElMessage({
         message: 'Success',

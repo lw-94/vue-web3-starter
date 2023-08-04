@@ -1,5 +1,3 @@
-import { createApp } from 'vue'
-
 import VueCountdown from '@chenfengyuan/vue-countdown'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createPinia } from 'pinia'

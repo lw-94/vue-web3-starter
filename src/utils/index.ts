@@ -35,9 +35,9 @@ export const toThousands = (num?: number | string) => {
 export const toFloor = (num: string | number, decimal: number = 4) => {
   if (num === '-') num = 0
   return StringUtil.start(num || 0)
-    .multi(10 ** decimal)
+    .shiftedBy(decimal)
     .remainDecimal(0)
-    .div(10 ** decimal)
+    .unShiftedBy(decimal)
     .toString()
 }
 
@@ -77,4 +77,41 @@ export const strTo16 = (numStr: string | number): string => {
     numStr = numStr + ''
   }
   return '0x' + parseInt(numStr).toString(16)
+}
+
+export const validNumber = (val: string, max?: string | number) => {
+  const res = val.match(/^\d*(\.?\d*)/g) ?? ['']
+  let newNum: string | number = res[0]
+  if (!newNum) return ''
+  if (newNum.length > 1 && newNum.slice(0, 1) === '0' && newNum.slice(1, 2) !== '.') {
+    // Remove leading 0
+    newNum = newNum.slice(1)
+  }
+  if (newNum.length > 1 && newNum.slice(0, 1) === '.') {
+    // Remove leading .
+    newNum = newNum.slice(1)
+  }
+  if (newNum.slice(-1) === '.') {
+    // Remove the tail .
+    newNum = newNum.slice(0, -1)
+  }
+  if (max === undefined) {
+    return newNum
+  }
+  const isExceedMax = StringUtil.start(newNum).gt(max)
+  if (isExceedMax) newNum = max
+  return newNum
+}
+
+export const chunkArray = (inputArray: any[], perChunk: number) => {
+  return inputArray.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / perChunk)
+
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = [] // start a new chunk
+    }
+    resultArray[chunkIndex].push(item)
+
+    return resultArray
+  }, [])
 }

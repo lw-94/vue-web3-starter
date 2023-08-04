@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import { useWindowSize } from '@vueuse/core'
 import { RouterView } from 'vue-router'
 

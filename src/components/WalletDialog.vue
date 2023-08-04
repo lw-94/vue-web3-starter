@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-
 import { storeToRefs } from 'pinia'
 
 import { type WalletInfo, useWalletStore } from '@/stores/wallet'

@@ -1,5 +1,3 @@
-import { onBeforeUnmount } from 'vue'
-
 import { storeToRefs } from 'pinia'
 
 import { useWalletStore } from '@/stores/wallet'

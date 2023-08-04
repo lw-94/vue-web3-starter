@@ -1,12 +1,16 @@
-import { ref } from 'vue'
-
 import { defineStore } from 'pinia'
 
 import Telegram from '@/assets/svg/telegram.svg'
 import Twitter from '@/assets/svg/twitter.svg'
 
+interface NavInfo {
+  title: string
+  routeName: string
+  disable?: boolean
+  afterIcon?: string
+}
 export const useAppStore = defineStore('app', () => {
-  const navList = ref([
+  const navList = ref<NavInfo[]>([
     {
       title: 'Airdrop',
       routeName: 'airdrop'
